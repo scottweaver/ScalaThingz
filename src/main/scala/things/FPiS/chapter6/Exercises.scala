@@ -181,15 +181,15 @@ object Exercise10 extends App {
 }
 
 
-object Exercise11 {
+object Exercise11 extends App {
 
   case class State[S, +A](run: S => (A, S))
 
   def unit[A, S](s: S => (A, S)): State[S, A] = State[S, A](s)
 
-  val sunit = unit[Int, String]{i => _.toInt}
+  val sunit = unit[String, Int]{i: Int => (i.toString, i)}
 
-  println()
+  println(sunit.run(12))
 
 
 }
